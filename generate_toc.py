@@ -49,6 +49,8 @@ class ArticleTocGenerator:
             
             # 将标题中的英文方括号替换为中文括号，防止破坏 Markdown 链接语法
             title = title.replace('[', '（').replace(']', '）')
+            # 将标题中的竖线替换为空，防止破坏 Markdown 表格结构
+            title = title.replace('|', '')
 
             # 2026-04-17 10:45:00 修改：将日期统一转为字符串，避免datetime对象与字符串混用导致切片错误
             if hasattr(date, 'strftime'):
