@@ -192,6 +192,71 @@ This is the about page...
 
 MIT License
 
+## Important Notes
+
+### 1. Filename Format Requirements
+
+**Must strictly follow** the `YYYY-MM-DD-title.md` format:
+- Date format: `YYYY-MM-DD` (Year-Month-Day)
+- **Must have a hyphen `-`** between date and title
+- Wrong example: `2026-04-08title.md` (missing hyphen)
+- Correct example: `2026-04-08-title.md` (with hyphen between date and title)
+
+### 2. Special Characters in Post Titles
+
+**Do not use** the following characters in post titles:
+- Square brackets: `[` `]` (breaks Markdown link syntax)
+- Pipe: `|` (breaks Markdown table structure)
+
+**Recommended practices**:
+- Use Chinese brackets instead: `（）`
+- Avoid using pipe characters in titles
+
+### 3. GitHub Actions Permissions
+
+To enable automatic table of contents updates, configure proper permissions:
+
+1. Go to repository settings: Settings -> Actions -> General
+2. Select "Read and write permissions" under Workflow permissions
+3. Click Save
+
+### 4. Table of Contents Generation
+
+The table of contents is generated automatically. To manually update it:
+
+```bash
+python generate_toc.py
+```
+
+### 5. Local Development Tips
+
+If posts are not displaying locally:
+- Check filename format in `_posts` directory
+- Ensure filenames follow `YYYY-MM-DD-title.md` format
+- Restart server with `bundle exec jekyll serve`
+
+## FAQ
+
+### Q: Why aren't my posts showing up on the website?
+A: 
+1. Check filename format (`YYYY-MM-DD-title.md`)
+2. Ensure files are in the `_posts` directory
+3. Verify the `date` field matches the filename date
+4. Wait 1-2 minutes for GitHub Pages build
+5. Clear browser cache and refresh
+
+### Q: Why are links showing as plain text in the table of contents?
+A: 
+1. Check if post titles contain square brackets `[]`
+2. Check if post titles contain pipe characters `|`
+3. Run `python generate_toc.py` to regenerate the table of contents
+
+### Q: Why isn't GitHub Actions updating the table of contents?
+A: 
+1. Go to Settings -> Actions -> General
+2. Enable "Read and write permissions" for Workflow permissions
+3. Click Save
+
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues and pull requests.
